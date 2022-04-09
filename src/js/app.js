@@ -8,8 +8,10 @@ import read from './reader';
 import json from './parser';
 
 /* eslint-disable max-classes-per-file */
-export default (async function gameSavingLoader() {
-  const data = await read();
-  const result = await json(data);
-  return JSON.parse(result);
-}());
+export default class GameSavingLoader {
+  async load() {
+    const data = await read();
+    const result = await json(data);
+    return JSON.parse(result);
+  }
+}
