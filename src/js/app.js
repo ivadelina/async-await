@@ -10,8 +10,12 @@ import json from './parser';
 /* eslint-disable max-classes-per-file */
 export default class GameSavingLoader {
   async load() {
-    const data = await read();
-    const result = await json(data);
-    return JSON.parse(result);
+    try {
+      const data = await read();
+      const result = await json(data);
+      return JSON.parse(result);
+    } catch (err) {
+      throw new Error('Ошибочка вышла');
+    }
   }
 }
